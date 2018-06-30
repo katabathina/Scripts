@@ -1,0 +1,41 @@
+#!/bin/bash
+================================
+#Still i havent execute this script:-
+====================================
+
+#Apache process monitor
+#Restart Apache Web Server When It Goes Down.
+RESTART=”/sbin/service httpd restart”
+#path to pgrep command
+PGREP=”/usr/bin/pgrep”
+HTTPD=”httpd”
+$PGREP ${HTTPD}
+if [ $? -ne 0 ] # if apache not running
+then
+$RESTART
+fi
+
+
+or 
+
+#!/bin/bash
+this script also still i am not verified:-
+
+# Make sure you make these paths correct
+result=`/usr/local/bin/php /home/journal/scripts/apache_restart/servercheck.php`
+echo $result
+if [ $result != 1 ]
+then
+/etc/init.d/httpd restart
+sleep 10
+restartcheck=`/usr/local/bin/php /home/journal/scripts/apache_restart/servercheck.php`
+if [ $restartcheck == 1 ]
+then
+echo "Apache server have been successfully restarted!" | mail -s "Server Alert: Apache restarted" pankaj.kumar@journaldev.com
+exit
+else
+echo "Apache server is still in error state!" | mail -s "Server Alert: Apache in error state" pankaj.kumar@journaldev.com
+exit
+fi
+exit
+fi

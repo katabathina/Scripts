@@ -1,0 +1,129 @@
+#!/bin/bash
+#author:- Sreedhar this is also working
+echo "How many number of terms to be generated ?" 
+read n 
+x=0 
+y=1 
+i=2 
+echo "Fibonacci Series up to $n terms :" 
+echo "$x" 
+echo "$y" 
+while [ $i -lt $n ] 
+do 
+i=`expr $i + 1 ` 
+z=`expr $x + $y ` 
+echo "$z" 
+x=$y 
+y=$z 
+done
+
+OUTPUT:-
+How many number of terms to be generated ? 5
+Fibonacci Series up to $n terms :
+0
+1
+1
+2
+3
+
+
+==========================
+Bash shell programming Find Fibonacci Series in Linux and UNIX Programming
+(this is working by me)
+echo "Enter the number"
+read n
+i=1
+a=-1
+fib=0
+b=1
+echo "Fibonacci series is"
+while [ $i -lt $n ]
+do
+fib=`expr $a + $b`
+a=$b
+b=$fib
+echo $fib
+i=`expr $i + 1`
+done
+
+==========================
+Factorial number script:-
+
+#!/bin/bash
+#this script is working factorial
+i=1
+f=1
+echo "Enter the n value:"
+read n
+while [ $i -le $n ]
+do
+f=`expr $f \* $i`
+i=`expr $i + 1`
+done
+echo "The factorial of $n is":$f
+
+======================================
+
+print max and minum number of integers:-
+
+#!/bin/bash
+#this script is working
+
+echo "enter size of an array"
+read n
+#taking input from user
+for((i=0;i<n;i++))
+do
+echo " enter $((i+1)) number"
+read nos[$i]
+done
+#printing the entered number
+echo "number entered are"
+for((i=0;i<n;i++))
+do
+echo ${nos[$i]}
+done
+#main loop
+small=${nos[0]}
+greatest=${nos[0]}
+for((i=0;i<n;i++))
+do
+#logic for smallest number
+if [ ${nos[$i]} -lt $small ]; then
+small=${nos[$i]}
+#logic for greatest number
+elif [ ${nos[$i]} -gt $greatest ]; then
+greatest=${nos[$i]}
+fi
+done
+#printing smallest and greatest number
+echo "smallest number in an array is $small"
+echo "greatest number in an array is $greatest"
+
+
+====================================
+
+Sceanario:-
+
+I already ssh to hosts
+Now i want to  know remote hosts OS flovour.
+
+#!/bin/bash
+# finding remote hosts os flovour
+for i in server1 server2 server3
+do
+echo "remote host flavour $i `uname`
+done
+
+==========================
+
+How to Compare Numbers, Strings and Files in Bash Shell Script;-
+
+https://www.linuxtechi.com/compare-numbers-strings-files-in-bash-script/
+
+
+
+
+
+
+

@@ -1,0 +1,133 @@
+
+#. How to Compare Numbers, Strings and Files in Bash Shell Script.
+
+#####-->Numeric Comparisons:-
+
+num1 -eq num2                  check if 1st  number is equal to 2nd number
+num1 -ge num2                  checks if 1st  number  is greater than or equal to 2nd number
+num1 -gt num2                  checks if 1st  number is greater than 2nd number
+num1 -le num2                   checks if 1st number is less than or equal to 2nd number
+num1 -lt num2                   checks if 1st  number  is less than 2nd number
+num1 -ne num2                  checks if 1st  number  is not equal to 2nd number
+
+#####-->Strings Comparisons:-
+
+var1 = var2     checks if var1 is the same as string var2
+var1 != var2    checks if var1 is not the same as var2
+var1 < var2     checks if var1 is less than var2
+var1 > var2     checks if var1 is greater than var2
+-n var1             checks if var1 has a length greater than zero
+-z var1             checks if var1 has a length of zero
+
+
+#####-->File comparison :-
+
+-d file                        checks if the file exists and is it’s a directory
+-e file                        checks if the file exists on system
+-w file                       checks if the file exists on system and if it is writable
+-r file                        checks if the file exists on system and it is readable
+-s file                        checks if the file exists on system and it is not empty
+-f file                         checks if the file exists on system and it is a file
+-O file                       checks if the file exists on system and if it’s is owned by the current user
+-G file                        checks if the file exists and the default group is the same as the current user
+-x file                         checks if the file exists on system and is executable
+file A -nt file B         checks if file A is newer than file B
+file A -ot file B          checks if file A is older than file B
+
+
+
+==> Syntax for doing comparisons:-
+ 
+ if [ conditions/comparisons]
+    then
+         commands
+fi
+
+if [2 -gt 3]
+     then
+     print "2 is greater"
+     else
+     print "2 is not greater"
+fi
+
+==> Now that we know all the parameters that are used 
+    for numeric comparisons, let’s use these in a script,:-
+	
+#!/bin/bash
+# Script to do numeric comparisons
+var1=10
+var2=20
+if [ $var2 -gt $var1 ]
+    then
+        echo "$var2 is greater than $var1"
+fi
+# Second comparison
+If [ $var1 -gt 30]
+    then
+        echo "$var is greater than 30"
+    else
+        echo "$var1 is less than 30"
+fi
+
+==>  Now let’s create a script doing the string comparisons:-
+
+#!/bin/bash
+# Script to do string equality comparison
+name=linuxtechi
+if [ $USER = $name ]
+        then
+                echo "User exists"
+        else
+                echo "User not found"
+fi
+# script to check string comparisons
+var1=a
+var2=z
+var3=Z
+if [ $var1 \> $var2 ]
+        then
+                echo "$var1 is greater"
+        else
+                echo "$var2 is greater"
+fi
+# Lower case  & upper case comparisons
+if [ $var3 \> $var1 ]
+        then
+                echo "$var3 is greater"
+        else
+                echo "$var1 is greater"
+fi
+
+==> We will now be creating another script that will use “-n” & “-z” 
+   with strings to check if they hold any value:-
+ 
+#!/bin/bash
+# Script to see if the variable holds value or not
+var1=" "
+var2=linuxtechi
+if [ -n $var1 ]
+        then
+                echo "string  is not empty"
+        else
+                echo "string provided is empty"
+fi
+
+==>  Here is a script using the file comparison;-
+
+#!/bin/bash
+# Script to check file comparison
+dir=/home/linuxtechi
+if [ -d $dir ]
+        then
+                echo "$dir is a directory"
+                cd $dir
+                ls -a
+        else
+                echo "$dir is not exist"
+fi
+
+
+ 
+
+
+
